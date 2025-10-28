@@ -3,7 +3,7 @@
 in
   python.pkgs.buildPythonPackage rec {
     pname = "flashfocus";
-    version = "2.4.1";
+    version = "2.4.2";
 
     src = ./src; # your repo source
 
