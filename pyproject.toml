@@ -47,8 +47,9 @@ dependencies = [
 ]
 
 [build-system]
-requires = ["setuptools>=61", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 
 [project.optional-dependencies]
 dev=[
@@ -70,14 +71,8 @@ dev=[
 flashfocus = "flashfocus.cli:cli"
 flash_window = "flashfocus.client:client_request_flash"
 
-[tool.setuptools]
-# Note script-files is deprecated, long term we might not be able to include this
-# script in the build
-script-files = ["bin/nc_flash_window"]
-packages.find.where = ["src"]
-
-[tool.setuptools.dynamic]
-version = {attr = "flashfocus.__version__"}
+[tool.hatch.version]
+path = "src/flashfocus/__init__.py"
 
 [tool.black]
 line-length = 100

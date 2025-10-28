@@ -1,21 +1,37 @@
-{pkgs ? import <nixpkgs> {}}: let
-  python = pkgs.python313;
-in
-  python.pkgs.buildPythonPackage rec {
-    pname = "flashfocus";
-    version = "2.4.2";
+{
+  lib,
+  buildPythonApplication,
+  hatchling,
+  xcffib,
+  cffi,
+  click,
+  i3ipc,
+  marshmallow,
+  pyyaml,
+  xpybutil,
+  ...
+}:
+buildPythonApplication {
+  pname = "flashfocus";
+  version = "2.4.2";
 
-    src = ./src; # your repo source
+  src = ./.; # your repo source
+  pyproject = true;
+  build-system = [hatchling];
 
-    propagatedBuildInputs = with python.pkgs; [
-      cffi # latest version (2.0+)
-      setuptools
-      xcffib # X11 bindings
-    ];
+  propagatedBuildInputs = [
+    xcffib
+    cffi
+    click
+    i3ipc
+    marshmallow
+    pyyaml
+    xpybutil
+  ];
 
-    meta = with pkgs.lib; {
-      description = "Focus animation daemon for X11/Sway/i3/tiling WMs";
-      license = licenses.mit;
-      maintainers = with maintainers; [];
-    };
-  }
+  meta = with lib; {
+    description = "Focus animation daemon for X11/Sway/i3/tiling WMs";
+    license = licenses.mit;
+    maintainers = with maintainers; [];
+  };
+}
