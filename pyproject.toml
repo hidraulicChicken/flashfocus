@@ -92,6 +92,11 @@ line-length = 100
 [tool.ruff.isort]
 combine-as-imports = true
 
+[dependency-groups]
+dev = [
+    "pre-commit>=3.5.0",
+]
+
 [[tool.mypy.overrides]]
 module = [
   "i3ipc",
