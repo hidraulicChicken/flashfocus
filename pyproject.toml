@@ -19,6 +19,7 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Topic :: Desktop Environment :: Window Managers",
   "Topic :: Desktop Environment"
 ]
@@ -36,9 +37,9 @@ keywords=[
 ]
 requires-python = ">=3.8"
 dependencies = [
-  "xcffib>=0.6.0,<1.0",
+  "xcffib>=0.6.0,<=1.11.2",
   "click>=6.7,<9.0",
-  "cffi>=1.11,<2.0",
+  "cffi>=1.11,<=2.0",
   "xpybutil>=0.0.6,<1.0",
   "marshmallow>=2.15,<4.0",
   "pyyaml>=5.1",
@@ -46,8 +47,9 @@ dependencies = [
 ]
 
 [build-system]
-requires = ["setuptools>=61", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 
 [project.optional-dependencies]
 dev=[
@@ -69,14 +71,8 @@ dev=[
 flashfocus = "flashfocus.cli:cli"
 flash_window = "flashfocus.client:client_request_flash"
 
-[tool.setuptools]
-# Note script-files is deprecated, long term we might not be able to include this
-# script in the build
-script-files = ["bin/nc_flash_window"]
-packages.find.where = ["src"]
-
-[tool.setuptools.dynamic]
-version = {attr = "flashfocus.__version__"}
+[tool.hatch.version]
+path = "src/flashfocus/__init__.py"
 
 [tool.black]
 line-length = 100
