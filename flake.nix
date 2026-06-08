@@ -28,10 +28,7 @@
       ];
 
       shellHook = ''
-        echo "Flashfocus dev shell with latest cffi and xcffib ready!"
         export PYTHONPATH=$PWD/src:$PYTHONPATH
-        python -c "import cffi; print('cffi version:', cffi.__version__)"
-        python -c "import xcffib; print('xcffib version:', xcffib.__version__)"
       '';
     };
   };

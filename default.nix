@@ -13,11 +13,11 @@
 }:
 buildPythonApplication {
   pname = "flashfocus";
-  version = "2.4.2";
+  version = "2.4.3";
 
   src = ./.; # your repo source
   pyproject = true;
-  build-system = [hatchling];
+  build-system = [ hatchling ];
 
   propagatedBuildInputs = [
     xcffib
@@ -32,6 +32,6 @@ buildPythonApplication {
   meta = with lib; {
     description = "Focus animation daemon for X11/Sway/i3/tiling WMs";
     license = licenses.mit;
-    maintainers = with maintainers; [];
+    maintainers = with maintainers; [ ];
   };
 }
